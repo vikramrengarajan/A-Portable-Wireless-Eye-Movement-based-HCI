@@ -1,0 +1,497 @@
+function varargout = WORDSPELLER(varargin)
+% WORDSPELLER M-file for WORDSPELLER.fig
+%      WORDSPELLER, by itself, creates a new WORDSPELLER or raises the existing
+%      singleton*.
+%
+%      H = WORDSPELLER returns the handle to a new WORDSPELLER or the handle to
+%      the existing singleton*.
+%
+%      WORDSPELLER('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in WORDSPELLER.M with the given input arguments.
+%
+%      WORDSPELLER('Property','Value',...) creates a new WORDSPELLER or raises the
+%      existing singleton*.  Starting from the left, property value pairs are
+%      applied to the GUI before WORDSPELLER_OpeningFcn gets called.  An
+%      unrecognized property name or invalid value makes property application
+%      stop.  All inputs are passed to WORDSPELLER_OpeningFcn via varargin.
+%
+%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
+%      instance to run (singleton)".
+%
+% See also: GUIDE, GUIDATA, GUIHANDLES
+
+% Edit the above text to modify the response to help WORDSPELLER
+
+% Last Modified by GUIDE v2.5 25-Mar-2013 17:11:42
+
+% Begin initialization code - DO NOT EDIT
+gui_Singleton = 1;
+gui_State = struct('gui_Name',       mfilename, ...
+                   'gui_Singleton',  gui_Singleton, ...
+                   'gui_OpeningFcn', @WORDSPELLER_OpeningFcn, ...
+                   'gui_OutputFcn',  @WORDSPELLER_OutputFcn, ...
+                   'gui_LayoutFcn',  [] , ...
+                   'gui_Callback',   []);
+if nargin && ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+end
+
+if nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+else
+    gui_mainfcn(gui_State, varargin{:});
+end
+% End initialization code - DO NOT EDIT
+
+
+% --- Executes just before WORDSPELLER is made visible.
+function WORDSPELLER_OpeningFcn(hObject, eventdata, handles, varargin)
+% This function has no output args, see OutputFcn.
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% varargin   command line arguments to WORDSPELLER (see VARARGIN)
+
+% Choose default command line output for WORDSPELLER
+handles.output = hObject;
+
+% Update handles structure
+guidata(hObject, handles);
+
+
+
+
+
+
+% --- Outputs from this function are returned to the command line.
+function varargout = WORDSPELLER_OutputFcn(hObject, eventdata, handles) 
+% varargout  cell array for returning output args (see VARARGOUT);
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Get default command line output from handles structure
+varargout{1} = handles.output;
+
+
+
+function edit1_Callback(hObject, eventdata, handles)
+% hObject    handle to edit1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit1 as text
+%        str2double(get(hObject,'String')) returns contents of edit1 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in a_but.
+function a_but_Callback(hObject, eventdata, handles)
+% hObject    handle to a_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in b_but.
+function b_but_Callback(hObject, eventdata, handles)
+% hObject    handle to b_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in j_but.
+function j_but_Callback(hObject, eventdata, handles)
+% hObject    handle to j_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in i_but.
+function i_but_Callback(hObject, eventdata, handles)
+% hObject    handle to i_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in h_but.
+function h_but_Callback(hObject, eventdata, handles)
+% hObject    handle to h_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in g_but.
+function g_but_Callback(hObject, eventdata, handles)
+% hObject    handle to g_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in f_but.
+function f_but_Callback(hObject, eventdata, handles)
+% hObject    handle to f_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in e_but.
+function e_but_Callback(hObject, eventdata, handles)
+% hObject    handle to e_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in d_but.
+function d_but_Callback(hObject, eventdata, handles)
+% hObject    handle to d_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in c_but.
+function c_but_Callback(hObject, eventdata, handles)
+% hObject    handle to c_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in r_but.
+function r_but_Callback(hObject, eventdata, handles)
+% hObject    handle to r_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in q_but.
+function q_but_Callback(hObject, eventdata, handles)
+% hObject    handle to q_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in p_but.
+function p_but_Callback(hObject, eventdata, handles)
+% hObject    handle to p_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in o_but.
+function o_but_Callback(hObject, eventdata, handles)
+% hObject    handle to o_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in n_but.
+function n_but_Callback(hObject, eventdata, handles)
+% hObject    handle to n_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in m_but.
+function m_but_Callback(hObject, eventdata, handles)
+% hObject    handle to m_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in l_but.
+function l_but_Callback(hObject, eventdata, handles)
+% hObject    handle to l_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in k_but.
+function k_but_Callback(hObject, eventdata, handles)
+% hObject    handle to k_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in stop_but.
+function stop_but_Callback(hObject, eventdata, handles)
+% hObject    handle to stop_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+global stop;
+stop=0;
+newobjs = instrfind
+
+fclose(newobjs)
+
+
+% --- Executes on button press in z_but.
+function z_but_Callback(hObject, eventdata, handles)
+% hObject    handle to z_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in y_but.
+function y_but_Callback(hObject, eventdata, handles)
+% hObject    handle to y_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in x_but.
+function x_but_Callback(hObject, eventdata, handles)
+% hObject    handle to x_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in w_but.
+function w_but_Callback(hObject, eventdata, handles)
+% hObject    handle to w_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in v_but.
+function v_but_Callback(hObject, eventdata, handles)
+% hObject    handle to v_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in u_but.
+function u_but_Callback(hObject, eventdata, handles)
+% hObject    handle to u_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in t_but.
+function t_but_Callback(hObject, eventdata, handles)
+% hObject    handle to t_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in s_but.
+function s_but_Callback(hObject, eventdata, handles)
+% hObject    handle to s_but (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in pushbutton36.
+function pushbutton36_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton36 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in pushbutton37.
+function pushbutton37_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton37 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in pushbutton38.
+function pushbutton38_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton38 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+global stop;
+% UIWAIT makes WORDSPELLER wait for user response (see UIRESUME)
+% uiwait(handles.figure1);
+stop=1;
+str=    'ABCDEFGHIJKLMNOPQRSTUVWXYZ-';
+SER_OBJ = serial('COM7','BaudRate',9600);
+fopen(SER_OBJ);
+x='qp';
+count=1;
+warning off;
+
+while(stop==1)
+    
+    drawnow
+        move=fscanf(SER_OBJ,'%c');        
+        if(move(1)=='U')
+            count=count-1;
+        end        
+        if(move(1)=='D')
+            count=count+1;
+        end  
+        
+        if(move(1)=='N')
+            %count=count+1;
+            access=get(handles.edit1,'String');
+            set(handles.edit1,'String',strcat(access,str(count)));            
+        end  
+        
+        if(count<=0)
+            count=26;
+        end        
+        if(count>27)
+            count=1;
+        end;
+        
+        if(count~=1)
+            set(handles.a_but,'Visible','off');
+        else
+            set(handles.a_but,'Visible','on');
+        end
+        
+        if(count~=2)
+            set(handles.b_but,'Visible','off');
+        else
+            set(handles.b_but,'Visible','on');            
+        end
+        
+        if(count~=3)
+            set(handles.c_but,'Visible','off');
+        else
+            set(handles.c_but,'Visible','on');
+        end
+        
+        if(count~=4)
+            set(handles.d_but,'Visible','off');
+        else
+            set(handles.d_but,'Visible','on');
+        end
+        if(count~=5)
+            set(handles.e_but,'Visible','off');
+        else
+            set(handles.e_but,'Visible','on');
+        end
+        if(count~=6)
+            set(handles.f_but,'Visible','off');
+        else
+            set(handles.f_but,'Visible','on');
+        end
+        if(count~=7)
+            set(handles.g_but,'Visible','off');
+        else
+            set(handles.g_but,'Visible','on');
+        end
+        if(count~=8)
+            set(handles.h_but,'Visible','off');
+        else
+            set(handles.h_but,'Visible','on');
+        end
+        if(count~=9)
+            set(handles.i_but,'Visible','off');
+        else
+            set(handles.i_but,'Visible','on');
+        end
+        if(count~=10)
+            set(handles.j_but,'Visible','off');
+        else
+            set(handles.j_but,'Visible','on');
+        end
+        if(count~=11)
+            set(handles.k_but,'Visible','off');
+        else
+            set(handles.k_but,'Visible','on');
+        end
+        if(count~=12)
+            set(handles.l_but,'Visible','off');
+        else
+            set(handles.l_but,'Visible','on');
+        end
+        if(count~=13)
+            set(handles.m_but,'Visible','off');
+        else
+            set(handles.m_but,'Visible','on');
+        end
+        if(count~=14)
+            set(handles.n_but,'Visible','off');
+        else
+            set(handles.n_but,'Visible','on');
+        end
+        if(count~=15)
+            set(handles.o_but,'Visible','off');
+        else
+            set(handles.o_but,'Visible','on');
+        end
+        if(count~=16)
+            set(handles.p_but,'Visible','off');
+        else
+            set(handles.p_but,'Visible','on');
+        end
+        if(count~=17)
+            set(handles.q_but,'Visible','off');
+        else
+            set(handles.q_but,'Visible','on');
+        end
+        if(count~=18)
+            set(handles.r_but,'Visible','off');
+        else
+            set(handles.r_but,'Visible','on');
+        end
+        if(count~=19)
+            set(handles.s_but,'Visible','off');
+        else
+            set(handles.s_but,'Visible','on');
+        end
+        if(count~=20)
+            set(handles.t_but,'Visible','off');
+        else
+            set(handles.t_but,'Visible','on');
+        end
+        if(count~=21)
+            set(handles.u_but,'Visible','off');
+        else
+            set(handles.u_but,'Visible','on');
+        end
+        if(count~=22)
+            set(handles.v_but,'Visible','off');
+        else
+            set(handles.v_but,'Visible','on');
+        end
+        if(count~=23)
+            set(handles.w_but,'Visible','off');
+        else
+            set(handles.w_but,'Visible','on');
+        end
+        if(count~=24)
+            set(handles.x_but,'Visible','off');
+        else
+            set(handles.x_but,'Visible','on');
+        end
+        if(count~=25)
+            set(handles.y_but,'Visible','off');
+        else
+            set(handles.y_but,'Visible','on');
+        end
+        if(count~=26)
+            set(handles.z_but,'Visible','off');
+        else
+            set(handles.z_but,'Visible','on');
+        end
+        
+        
+        
+        drawnow
+        
+        
+        
+        
+        
+        
+        
+        
+        fprintf('\nCurrent Alpha=%c',str(count));
+        fprintf('\nCurrent Alpha=%s',move);
+                      
+        
+end

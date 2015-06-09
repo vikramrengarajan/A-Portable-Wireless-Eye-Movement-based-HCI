@@ -1,0 +1,70 @@
+#include<PIC.H>
+__CONFIG(0x3F3A);   //programable code protection
+#include<string.h>
+#include<stdio.h>
+#define a RD5        //serial device selection
+#define b RD6        //serial device selection
+#define INHIBIT RD7  //serial device selection
+void serial_comm(unsigned char);
+void uart_init(void);
+void title(void);
+void To_PC(void);
+void To_zigbee(void);
+unsigned char Tx_data[16];
+unsigned char receive;
+bit setbit=0;
+void main(void)
+{        RBPU=0;            //internal pullups
+	TRISB=0x00;        //output port if declared "0"
+	PORTB=0x00;TRISD=0x00;
+	PORTD=0X00;
+	lcd_init();uart_init();title();
+	RD0=0;RD1=0;
+	while(1)
+	{        To_zigbee();
+		if(setbit)
+		{        setbit=0;
+			if(receive=='U')
+			{        To_PC();
+				serial_comm('U');  //lcddata_disp('U');
+				time2();}
+			else if(receive=='D')
+			{        To_PC();
+				serial_comm('D');  //lcddata_disp('D');
+				time2();}
+			else if(receive=='N')
+			{        To_PC();
+				serial_comm('N');  //lcddata_disp('N');
+				time2();}
+			else if(receive=='a')
+			{        RD0=1;RD1=0;}
+			else if(receive=='b')
+			{        RD0=0;RD1=1;}
+			else if(receive='c')
+			{        RD0=0;RD1=0;}  }  }  }
+void To_zigbee(void)
+{        a=0;b=0;INHIBIT=0;}
+void To_PC(void)
+{        a=1;b=1;INHIBIT=0;}
+void title(void)
+{         lcdcmd(0x80);
+	strcpy(Tx_data," Portable Eye ");
+	lcdstring_disp(&Tx_data[0]);
+	lcdcmd(0xC0);
+	strcpy(Tx_data,"   Movement   ");
+	lcdstring_disp(&Tx_data[0]);}
+void uart_init(void)           //Serial port initialization
+{        TRISC=0xC1;TXSTA=0x30;
+	RCSTA=0x80;
+	RCIE=GIE=PEIE=0;
+	RCIF=0;TXIF=0;
+	SPBRG=0x19;          //9600 Baud rate,4Mhz
+}//Send data through serial port	
+void serial_comm(unsigned char sdata)
+{        TXREG=sdata;
+	while(TXIF==0);
+	TXIF=0;}
+//Interrupt for receiving
+void interrupt isr(void)
+{     if(RCIF)
+	{        RCIF=0;receive=RCREG;setbit=1;		}  }

@@ -1,0 +1,94 @@
+#include<pic.h>
+__CONFIG(0x3F3A);
+#define rs RB4
+#define en RB5
+void lcd_init(void);
+void lcdcmd(unsigned char);
+void lcddata_disp(unsigned char);
+void lcdtitle_data(void);
+void right_sensor(void);
+void right_read(void);
+void delay(void);
+void serial_comm(unsigned char);
+void uart_init(void);
+void main(void)
+{        TRISB=0x00;
+	PORTB=0x00;RBPU=0;
+	lcd_init();uart_init();
+	lcdtitle_data();lcdcmd(0x01);
+	while(1)
+	{        right_sensor();time2();}}
+
+void right_sensor(void)//Use AN1
+{        ADCON0=0x89;ADCON1=0x83;
+	ADIF=0;ADCON0 = ADCON0 | 0x04;
+	while(ADIF==0);
+	ADIF=0;delay();right_read();}
+void right_read(void)
+{        unsigned int result;
+	unsigned char a,b,c,d,x,y;
+	result=ADRESH;result<<=8;
+	result=result|ADRESL;
+	if(result>695)
+	{        lcdcmd(0x80);
+		delay();delay();
+		lcddata_disp('U');lcddata_disp('p');
+		serial_comm('U');
+		delay();delay();
+	}
+	else if(result<650)
+	{         lcdcmd(0x80);
+		delay();delay();
+		lcddata_disp('D');lcddata_disp('o');
+		lcddata_disp('w');lcddata_disp('n');
+		serial_comm('D');delay();delay();}
+	else if(result>665 & result<680)
+	{         lcdcmd(0x80);delay();delay();
+		lcddata_disp('N');lcddata_disp('o');
+		lcddata_disp('r');lcddata_disp('m');
+		lcddata_disp('a');lcddata_disp('l');
+		serial_comm('N');delay();delay();}
+	          a=result/1000;result=result%1000;
+	          b=result/100;result=result%100;
+	          c=result/10;d=result%10;
+	          lcdcmd(0x01);delay();}
+//LCD title send as a 4 bit
+void lcdtitle_data()
+{         unsigned char title_name[16]="  Eye Movement  ";
+	unsigned char x,data;
+	for(x=0;x<=16;x++)
+	{ data=title_name[x]; lcddata_disp(data);		}
+	lcdcmd(0x03);	 }
+void lcd_init()            //LCD Initialization
+{        lcdcmd(0x28);lcdcmd(0x28);
+	lcdcmd(0x06);lcdcmd(0x0E);
+	lcdcmd(0x01);lcdcmd(0x80);}
+void lcdcmd(unsigned char command)  //LCD command send as a 4bit
+{        unsigned char cvalue; 
+	cvalue=command>>4;
+	PORTB=cvalue;
+	rs=0;en=1;delay();en=1; 
+	cvalue=command & 0x0F;
+    PORTB=cvalue; rs=0; en=0;
+	delay();en=0;   }
+void lcddata_disp(unsigned char lcddata) //LCD data send as a 4 bit
+{        unsigned char dvalue; dvalue=lcddata>>4;
+           PORTB=dvalue;
+           rs=1;en=1;delay();en=0;
+	dvalue=lcddata & 0x0F;
+	PORTB=dvalue;rs=1;en=1;delay();
+	en=0;rs=0; 
+}
+void delay(void)
+{int i;
+  for(i=0;i<=1500;i++);}
+void uart_init(void)  //Serial port initialization
+{        TRISC=0xC0;
+	TXSTA=0x25;RCSTA=0x80;
+	RCIE=GIE=PEIE=0;RCIF=0;TXIF=0;
+	SPBRG=0x19;  }           //9600 Baud rate,4Mhz
+//Send data through serial port	
+void serial_comm(unsigned char sdata)
+{	TXREG=sdata;
+	while(TXIF==0);
+	TXIF=0;}
